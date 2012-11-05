@@ -39,33 +39,18 @@ public class TestCharacter extends GenericObject {
 		rightLower.setLocation(getX()+getWidth(),(int)(getY()+0.8*getHeight()));
 		leftFoot.setLocation((int)(getX()+0.3*getWidth()),getY()+getHeight());
 		rightFoot.setLocation((int)(getX()+0.7*getWidth()),getY()+getHeight());
-//		checkColitions();
-
 	}
-
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT)
-			dx = -1;
-		if (key == KeyEvent.VK_RIGHT)
-			dx = 1;
-		if (key == KeyEvent.VK_UP)
-			dy = -1;
-		if (key == KeyEvent.VK_DOWN)
-			dy = 1;
+	
+	public void forceMove(int forcedDx,int forcedDy){
+		setX(getX() + forcedDx);
+		setY(getY() + forcedDy);
+		upper.setLocation(getX()+(getWidth()/2),getY());
+		leftUpper.setLocation(getX(), (int)(getY()+0.2*getHeight()));
+		leftLower.setLocation(getX(),(int)(getY()+0.8*getHeight()));
+		rightUpper.setLocation(getX()+getWidth(),(int)(getY()+0.2*getHeight()));
+		rightLower.setLocation(getX()+getWidth(),(int)(getY()+0.8*getHeight()));
+		leftFoot.setLocation((int)(getX()+0.3*getWidth()),getY()+getHeight());
+		rightFoot.setLocation((int)(getX()+0.7*getWidth()),getY()+getHeight());
+		
 	}
-
-	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
-
-		if (key == KeyEvent.VK_LEFT)
-			dx = 0;
-		if (key == KeyEvent.VK_RIGHT)
-			dx = 0;
-		if (key == KeyEvent.VK_UP)
-			dy = 0;
-		if (key == KeyEvent.VK_DOWN)
-			dy = 0;
-	}
-
 }
