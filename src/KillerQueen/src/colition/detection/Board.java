@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.security.acl.LastOwnerException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Board extends JPanel implements ActionListener {
@@ -14,7 +17,7 @@ public class Board extends JPanel implements ActionListener {
 	World world;
 	TestCharacter avatar;
 	Timer time;
-	
+
 	public Board() {
 		avatar = new TestCharacter(100, 100, 30, 20);
 		world = new World();
@@ -45,33 +48,76 @@ public class Board extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
-		if (!isColiding())
-			avatar.move();
+		avatar.move();
 		repaint();
 	}
 
-	private boolean isColiding() {
-
+	void checkColition() {
 		TestCharacter auxChar = new TestCharacter(avatar.getX(), avatar.getY(),
 				avatar.getHeight(), avatar.getWidth());
 		auxChar.move();
+
 		if (world.gridArray[auxChar.upper.x / 5][auxChar.upper.y / 5] == true)
-			return true;
+			avatar.setCanMoveUp(false);
+		else
+			avatar.setCanMoveUp(true);
+
 		if (world.gridArray[auxChar.rightUpper.x / 5][auxChar.rightUpper.y / 5] == true)
-			return true;
+			avatar.setCanMoveRight(false);
+		else
+			avatar.setCanMoveRight(true);
 		if (world.gridArray[auxChar.rightLower.x / 5][auxChar.rightLower.y / 5] == true)
-			return true;
+			avatar.setCanMoveRight(false);
+		else
+			avatar.setCanMoveRight(true);
+
 		if (world.gridArray[auxChar.rightFoot.x / 5][auxChar.rightFoot.y / 5] == true)
-			return true;
+			avatar.setCanMoveDown(false);
+		else
+			avatar.setCanMoveDown(true);
 		if (world.gridArray[auxChar.leftFoot.x / 5][auxChar.leftFoot.y / 5] == true)
-			return true;
+			avatar.setCanMoveDown(false);
+		else
+			avatar.setCanMoveDown(true);
+
 		if (world.gridArray[auxChar.leftLower.x / 5][auxChar.leftLower.y / 5] == true)
-			return true;
+			avatar.setCanMoveLeft(false);
+		else
+			avatar.setCanMoveLeft(true);
 		if (world.gridArray[auxChar.leftUpper.x / 5][auxChar.leftUpper.y / 5] == true)
-			return true;
-		return false;
+			avatar.setCanMoveLeft(false);
+		else
+			avatar.setCanMoveLeft(true);
+
 	}
+
+	// private boolean isColiding() {
+	//
+	// TestCharacter auxChar = new TestCharacter(avatar.getX(), avatar.getY(),
+	// avatar.getHeight(), avatar.getWidth());
+	// auxChar.move();
+	// if (world.gridArray[auxChar.upper.x / 5][auxChar.upper.y / 5] == true)
+	// return true;
+	// if (world.gridArray[auxChar.rightUpper.x / 5][auxChar.rightUpper.y / 5]
+	// == true)
+	// return true;
+	// if (world.gridArray[auxChar.rightLower.x / 5][auxChar.rightLower.y / 5]
+	// == true)
+	// return true;
+	// if (world.gridArray[auxChar.rightFoot.x / 5][auxChar.rightFoot.y / 5] ==
+	// true)
+	// return true;
+	// if (world.gridArray[auxChar.leftFoot.x / 5][auxChar.leftFoot.y / 5] ==
+	// true)
+	// return true;
+	// if (world.gridArray[auxChar.leftLower.x / 5][auxChar.leftLower.y / 5] ==
+	// true)
+	// return true;
+	// if (world.gridArray[auxChar.leftUpper.x / 5][auxChar.leftUpper.y / 5] ==
+	// true)
+	// return true;
+	// return false;
+	// }
 
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -86,7 +132,7 @@ public class Board extends JPanel implements ActionListener {
 				avatar.rightLower.y, avatar.rightFoot.y, avatar.leftFoot.y,
 				avatar.leftLower.y, avatar.leftUpper.y };
 		g2d.drawPolygon(xCoords, yCoords, 7);
-		for (int i = 0; i < 77; i++) {
+		for (int i = 0; i < 80; i++) {
 			g2d.drawRect(world.boxArray[i].getX(), world.boxArray[i].getY(),
 					world.boxArray[i].getWidth(), world.boxArray[i].getHeight());
 		}
@@ -94,14 +140,34 @@ public class Board extends JPanel implements ActionListener {
 
 	public void keyWasPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT)
-			avatar.dx = -3;
-		if (key == KeyEvent.VK_RIGHT)
-			avatar.dx = 3;
-		if (key == KeyEvent.VK_UP)
-			avatar.dy = -3;
-		if (key == KeyEvent.VK_DOWN)
-			avatar.dy = 3;
+		checkColition();
+		if (key == KeyEvent.VK_LEFT) {
+			if (avatar.isCanMoveLeft())
+				avatar.dx = -1;
+			else
+				avatar.dx = 0;
+		}
+
+		if (key == KeyEvent.VK_RIGHT) {
+			if (avatar.isCanMoveRight())
+				avatar.dx = 1;
+			else
+				avatar.dx = 0;
+		}
+
+		if (key == KeyEvent.VK_UP) {
+			if (avatar.isCanMoveUp())
+				avatar.dy = -1;
+			else
+				avatar.dy = 0;
+		}
+
+		if (key == KeyEvent.VK_DOWN) {
+			if (avatar.isCanMoveDown())
+				avatar.dy = 1;
+			else
+				avatar.dy = 0;
+		}
 	}
 
 	public void keyWasReleased(KeyEvent e) {

@@ -54,6 +54,36 @@ public class World {
 			}
 			pos++;
 		}
+
+		boxArray[pos] = new TestStaticObject(140, 232, 35, 35);
+		offsetX = boxArray[pos].getX() / 5;
+		offsetY = boxArray[pos].getY() / 5;
+		for (int j = 0; j < 7; j++) {
+			for (int j2 = 0; j2 < 7; j2++) {
+				gridArray[j + offsetX][j2 + offsetY] = true;
+			}
+		}
+		pos++;
+
+		boxArray[pos] = new TestStaticObject(450, 397, 35, 35);
+		offsetX = boxArray[pos].getX() / 5;
+		offsetY = boxArray[pos].getY() / 5;
+		for (int j = 0; j < 7; j++) {
+			for (int j2 = 0; j2 < 7; j2++) {
+				gridArray[j + offsetX][j2 + offsetY] = true;
+			}
+		}
+		pos++;
+
+		boxArray[pos] = new TestStaticObject(450, 432, 35, 35);
+		offsetX = boxArray[pos].getX() / 5;
+		offsetY = boxArray[pos].getY() / 5;
+		for (int j = 0; j < 7; j++) {
+			for (int j2 = 0; j2 < 7; j2++) {
+				gridArray[j + offsetX][j2 + offsetY] = true;
+			}
+		}
+		pos++;
 	}
 
 }
