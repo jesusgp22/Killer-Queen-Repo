@@ -11,33 +11,32 @@ import javax.swing.*;
 
 public class Board extends JPanel implements ActionListener {
 
+	World world;
 	TestCharacter avatar;
 	Timer time;
-	TestStaticObject[] boxArray;
-	boolean[][] gridArray;
 	
 	public Board() {
 		avatar = new TestCharacter(100, 100, 30, 20);
-		initWorld();
+		world = new World();
 		addKeyListener(new KeyListener() {
-			
+
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// Don't do anything
-				
+
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				keyWasReleased(e);
-				//System.out.println("released");
-				
+				// System.out.println("released");
+
 			}
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 				keyWasPressed(e);
-				//System.out.println("pressed, oh nyeah");				
+				// System.out.println("pressed, oh nyeah");
 			}
 		});
 		setFocusable(true);
@@ -45,83 +44,33 @@ public class Board extends JPanel implements ActionListener {
 		time.start();
 	}
 
-	private void initWorld() {
-		boxArray = new TestStaticObject[81];
-		gridArray = new boolean[140][140];
-		int offsetX, offsetY;
-		int pos = 0;
-		for (int i = 0; i < 20; i++) {
-			boxArray[pos] = new TestStaticObject(0, i * 35, 35, 35);
-			offsetX = boxArray[pos].getX() / 5;
-			offsetY = boxArray[pos].getY() / 5;
-			for (int j = 0; j < 7; j++) {
-				for (int j2 = 0; j2 < 7; j2++) {
-						gridArray[j+offsetX][j2+offsetY] = true;
-				}
-			}
-			pos++;
-		}
-		for (int i = 0; i < 19; i++) {
-			boxArray[pos] = new TestStaticObject(i * 35, 0, 35, 35);
-			offsetX = boxArray[pos].getX() / 5;
-			offsetY = boxArray[pos].getY() / 5;
-			for (int j = 0; j < 7; j++) {
-				for (int j2 = 0; j2 < 7; j2++) {
-						gridArray[j+offsetX][j2+offsetY] = true;
-				}
-			}
-			pos++;
-		}
-		for (int i = 0; i < 20; i++) {
-			boxArray[pos] = new TestStaticObject(19 * 35, i * 35, 35, 35);
-			offsetX = boxArray[pos].getX() / 5;
-			offsetY = boxArray[pos].getY() / 5;
-			for (int j = 0; j < 7; j++) {
-				for (int j2 = 0; j2 < 7; j2++) {
-						gridArray[j+offsetX][j2+offsetY] = true;
-				}
-			}
-			pos++;
-		}
-		for (int i = 1; i < 19; i++) {
-			boxArray[pos] = new TestStaticObject(i * 35, 19 * 35, 35, 35);
-			offsetX = boxArray[pos].getX() / 5;
-			offsetY = boxArray[pos].getY() / 5;
-			for (int j = 0; j < 7; j++) {
-				for (int j2 = 0; j2 < 7; j2++) {
-						gridArray[j+offsetX][j2+offsetY] = true;
-				}
-			}
-			pos++;
-		}
-	}
-
 	public void actionPerformed(ActionEvent e) {
-		
-		if(!isColiding())
+
+		if (!isColiding())
 			avatar.move();
 		repaint();
 	}
 
 	private boolean isColiding() {
-		
-		TestCharacter auxChar = new TestCharacter(avatar.getX(),avatar.getY(),avatar.getHeight(),avatar.getWidth());
+
+		TestCharacter auxChar = new TestCharacter(avatar.getX(), avatar.getY(),
+				avatar.getHeight(), avatar.getWidth());
 		auxChar.move();
-		if(gridArray[auxChar.upper.x/5][auxChar.upper.y/5] == true )
+		if (world.gridArray[auxChar.upper.x / 5][auxChar.upper.y / 5] == true)
 			return true;
-		if(gridArray[auxChar.rightUpper.x/5][auxChar.rightUpper.y/5] == true )
+		if (world.gridArray[auxChar.rightUpper.x / 5][auxChar.rightUpper.y / 5] == true)
 			return true;
-		if(gridArray[auxChar.rightLower.x/5][auxChar.rightLower.y/5] == true )
+		if (world.gridArray[auxChar.rightLower.x / 5][auxChar.rightLower.y / 5] == true)
 			return true;
-		if(gridArray[auxChar.rightFoot.x/5][auxChar.rightFoot.y/5] == true )
+		if (world.gridArray[auxChar.rightFoot.x / 5][auxChar.rightFoot.y / 5] == true)
 			return true;
-		if(gridArray[auxChar.leftFoot.x/5][auxChar.leftFoot.y/5] == true )
+		if (world.gridArray[auxChar.leftFoot.x / 5][auxChar.leftFoot.y / 5] == true)
 			return true;
-		if(gridArray[auxChar.leftLower.x/5][auxChar.leftLower.y/5] == true )
+		if (world.gridArray[auxChar.leftLower.x / 5][auxChar.leftLower.y / 5] == true)
 			return true;
-		if(gridArray[auxChar.leftUpper.x/5][auxChar.leftUpper.y/5] == true )
+		if (world.gridArray[auxChar.leftUpper.x / 5][auxChar.leftUpper.y / 5] == true)
 			return true;
-		return false;		
+		return false;
 	}
 
 	public void paint(Graphics g) {
@@ -138,12 +87,11 @@ public class Board extends JPanel implements ActionListener {
 				avatar.leftLower.y, avatar.leftUpper.y };
 		g2d.drawPolygon(xCoords, yCoords, 7);
 		for (int i = 0; i < 77; i++) {
-			g2d.drawRect(boxArray[i].getX(), boxArray[i].getY(),
-					boxArray[i].getWidth(), boxArray[i].getHeight());
+			g2d.drawRect(world.boxArray[i].getX(), world.boxArray[i].getY(),
+					world.boxArray[i].getWidth(), world.boxArray[i].getHeight());
 		}
 	}
-	
-	
+
 	public void keyWasPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_LEFT)

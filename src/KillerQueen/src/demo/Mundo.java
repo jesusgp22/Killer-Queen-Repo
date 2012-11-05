@@ -22,7 +22,7 @@ public class Mundo extends JPanel implements ActionListener {
 
 	public Mundo() {
 
-		String root = new String("/home/alberto/Dropbox/Killer Queen/Pictures/");
+		String root = new String("/home/leo/workspace/Killer-Queen-Repo/src/KillerQueen/res/");
 		p = new Personaje();
 		object = new Object(0, 0, 0, (root + "cuadrado.png"));
 
@@ -34,7 +34,7 @@ public class Mundo extends JPanel implements ActionListener {
 		posChY=300;
 		addKeyListener(new AL());
 		setFocusable(true);
-		ImageIcon i = new ImageIcon(root + "BG.jpg");
+		ImageIcon i = new ImageIcon(root + "BGR.jpg");
 		fondo = i.getImage();
 		sizeX = i.getIconWidth();
 		sizeY = i.getIconHeight();
