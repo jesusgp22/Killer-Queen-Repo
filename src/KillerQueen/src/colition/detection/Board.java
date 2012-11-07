@@ -3,15 +3,11 @@ package colition.detection;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Stroke;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.security.acl.LastOwnerException;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class Board extends JPanel implements ActionListener {
 
 	World world;

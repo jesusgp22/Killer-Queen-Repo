@@ -1,7 +1,6 @@
 package colition.detection;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
 
 import objects.BaseObject;
 
