@@ -22,12 +22,15 @@ public class World extends JPanel implements ActionListener {
 	Timer time;
 	Character p;
 	MobileObject object;
+	ImageLoader imageLoader;
 
 	public World() {
-
+		
+		imageLoader = new ImageLoader();
 		String root = new String("src/resources/images/");
 		p = new Character();
-		object = new MobileObject(0, 0, 0,0,0, (root + "cuadrado.png"));
+		object = new MobileObject(0, 0, 0, 0, 0, imageLoader.cuadrado.getImage());
+		
 
 		camx = 0;
 		camy = 0;
@@ -37,10 +40,9 @@ public class World extends JPanel implements ActionListener {
 		posChY=300;
 		addKeyListener(new AL());
 		setFocusable(true);
-		ImageIcon i = new ImageIcon(root + "BG.jpg");
-		fondo = i.getImage();
-		sizeX = i.getIconWidth();
-		sizeY = i.getIconHeight();
+		fondo = imageLoader.i.getImage();
+		sizeX = imageLoader.i.getIconWidth();
+		sizeY = imageLoader.i.getIconHeight();
 		time = new Timer(10, this);
 		time.start();
 
@@ -99,7 +101,7 @@ public class World extends JPanel implements ActionListener {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(fondo, -camx, camy, null);
-		g2d.drawImage(p.still, posChX, posChY, null);
+		g2d.drawImage(p.getObjectImage(), posChX, posChY, null);
 		g2d.drawImage(object.getObjectImage(), object.getX(), object.getY(), null);
 
 	}
@@ -115,7 +117,7 @@ public class World extends JPanel implements ActionListener {
 				dy = 0;
 			if (e.getKeyCode() == KeyEvent.VK_DOWN)
 				dy = 0;
-			p.keyReleased(e);
+			handleKeyReleased(e);
 		
 			
 		}
@@ -129,10 +131,99 @@ public class World extends JPanel implements ActionListener {
 				dy = 5;
 			if (e.getKeyCode() == KeyEvent.VK_DOWN)
 				dy = -5;
-			p.keyPressed(e);
+			handleKeyPressed(e);
 			
 		}
 
+	}
+	
+	public void handleKeyPressed(KeyEvent e){
+		int key = e.getKeyCode();
+			if(key == KeyEvent.VK_LEFT ){
+			dx = -5;
+			int np =p.getNp();
+			
+			if(np >=0 && np <3){
+				p.setObjectImage( imageLoader.l.getImage());
+				np = np +1;
+				System.out.println("1");
+			}		
+			if(np >=3 && np <6){
+				p.setObjectImage( imageLoader.ll.getImage());
+				np = np +1;
+				System.out.println("2");
+			}
+			if(np >=6 && np <9){
+				p.setObjectImage( imageLoader.lll.getImage());
+				np = np +1;
+				System.out.println("3");
+			}
+			if(np >=9){
+				p.setObjectImage( imageLoader.llll.getImage());
+				np = np +1;
+				System.out.println("4");
+				if(np==12)
+					np = 0;
+			}
+			}
+			
+			
+			if(key == KeyEvent.VK_RIGHT){
+			dx = 5;
+			
+			int np =p.getNp();
+				if(np >=0 && np <3){
+					p.setObjectImage(  imageLoader.r.getImage());
+					np = np +1;
+					System.out.println("1");
+				}		
+				if(np >=3 && np <6){
+					p.setObjectImage( imageLoader.rr.getImage());
+					np = np +1;
+					System.out.println("2");
+				}
+				if(np >=6 && np <9){
+					p.setObjectImage( imageLoader.rrr.getImage());
+					np = np +1;
+					System.out.println("3");
+				}
+				if(np >=9){
+					p.setObjectImage( imageLoader.rrrr.getImage());
+					np = np +1;
+					System.out.println("4");
+					if(np==12)
+						np = 0;
+				}
+			}
+			
+			if(key == KeyEvent.VK_DOWN){
+				p.setObjectImage( imageLoader.lll.getImage());
+				dy = -5;
+			}
+			
+			if(key == KeyEvent.VK_UP){
+				p.setObjectImage(imageLoader.rrr.getImage());
+				dy = 5;
+			}
+
+	}
+	
+	public void handleKeyReleased(KeyEvent e){
+		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_LEFT)
+		dx = 0;
+		//still= lll.getImage();
+		
+		if(key == KeyEvent.VK_RIGHT)
+		dx = 0;
+		//still= rrr.getImage();
+		
+		if(key == KeyEvent.VK_DOWN)
+		dy = 0;
+		
+		if(key == KeyEvent.VK_UP)
+		dy = 0;
+		
 	}
 
 }

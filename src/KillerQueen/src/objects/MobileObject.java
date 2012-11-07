@@ -9,8 +9,8 @@ public class MobileObject extends BaseObject {
 
 	protected int dx;
 	protected int dy;
-	private Image objectImage;
-	private int objectSpeed;
+	protected Image objectImage;
+	protected int objectSpeed;
 
 	public MobileObject() {
 		super();
@@ -20,11 +20,10 @@ public class MobileObject extends BaseObject {
 	}
 
 	public MobileObject(int x, int y, int height, int width, int objectSpeed,
-			String objectImage) {
+			Image objectImage) {
 		super(x, y, height, width);
 		this.objectSpeed = objectSpeed;
-		ImageIcon image = new ImageIcon(objectImage);
-		setObjectImage(image.getImage());
+		this.objectImage = objectImage;
 	}
 
 	public void setX(int x) {
