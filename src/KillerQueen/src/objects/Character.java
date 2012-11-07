@@ -1,4 +1,4 @@
-package demo;
+package objects;
 
 import java.awt.*;
 
@@ -7,10 +7,10 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-public class Personaje {
+public class Character {
 	int x, y, dx,np, dy;
-	Image still;
-	String root = new String("/home/alberto/Dropbox/Killer Queen/Pictures/");
+	public Image still;
+	String root = new String("src/resources/images/");
 	
 	ImageIcon r = new ImageIcon(root + "nosamus2.png");
 	ImageIcon l = new ImageIcon(root + "nosamus3.png");
@@ -22,7 +22,7 @@ public class Personaje {
 	ImageIcon llll= new ImageIcon(root + "nosamus3333.png");
 	
 	
-	public Personaje(){
+	public Character(){
 
 		still = r.getImage();
 		x = 75;

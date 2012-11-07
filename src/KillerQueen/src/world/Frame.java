@@ -1,4 +1,4 @@
-package demo;
+package world;
 	
 	import javax.swing.JFrame;
 
@@ -6,7 +6,7 @@ package demo;
 
 		public Frame() {
 			JFrame frame = new JFrame("Mundo Muestra");
-			frame.add(new Mundo());
+			frame.add(new World());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setSize(900, 550);
 			frame.setVisible(true);

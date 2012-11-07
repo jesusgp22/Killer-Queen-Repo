@@ -1,17 +1,19 @@
 package colition.detection;
 
+import objects.StaticObject;
+
 public class World {
 
-	TestStaticObject[] boxArray;
+	StaticObject[] boxArray;
 	boolean[][] gridArray;
 
 	public World() {
-		boxArray = new TestStaticObject[81];
+		boxArray = new StaticObject[81];
 		gridArray = new boolean[140][140];
 		int offsetX, offsetY;
 		int pos = 0;
 		for (int i = 0; i < 20; i++) {
-			boxArray[pos] = new TestStaticObject(0, i * 35, 35, 35);
+			boxArray[pos] = new StaticObject(0, i * 35, 35, 35);
 			offsetX = boxArray[pos].getX() / 5;
 			offsetY = boxArray[pos].getY() / 5;
 			for (int j = 0; j < 7; j++) {
@@ -22,7 +24,7 @@ public class World {
 			pos++;
 		}
 		for (int i = 0; i < 19; i++) {
-			boxArray[pos] = new TestStaticObject(i * 35, 0, 35, 35);
+			boxArray[pos] = new StaticObject(i * 35, 0, 35, 35);
 			offsetX = boxArray[pos].getX() / 5;
 			offsetY = boxArray[pos].getY() / 5;
 			for (int j = 0; j < 7; j++) {
@@ -33,7 +35,7 @@ public class World {
 			pos++;
 		}
 		for (int i = 0; i < 20; i++) {
-			boxArray[pos] = new TestStaticObject(19 * 35, i * 35, 35, 35);
+			boxArray[pos] = new StaticObject(19 * 35, i * 35, 35, 35);
 			offsetX = boxArray[pos].getX() / 5;
 			offsetY = boxArray[pos].getY() / 5;
 			for (int j = 0; j < 7; j++) {
@@ -44,7 +46,7 @@ public class World {
 			pos++;
 		}
 		for (int i = 1; i < 19; i++) {
-			boxArray[pos] = new TestStaticObject(i * 35, 19 * 35, 35, 35);
+			boxArray[pos] = new StaticObject(i * 35, 19 * 35, 35, 35);
 			offsetX = boxArray[pos].getX() / 5;
 			offsetY = boxArray[pos].getY() / 5;
 			for (int j = 0; j < 7; j++) {
@@ -55,7 +57,7 @@ public class World {
 			pos++;
 		}
 
-		boxArray[pos] = new TestStaticObject(140, 232, 35, 35);
+		boxArray[pos] = new StaticObject(140, 232, 35, 35);
 		offsetX = boxArray[pos].getX() / 5;
 		offsetY = boxArray[pos].getY() / 5;
 		for (int j = 0; j < 7; j++) {
@@ -65,7 +67,7 @@ public class World {
 		}
 		pos++;
 
-		boxArray[pos] = new TestStaticObject(450, 397, 35, 35);
+		boxArray[pos] = new StaticObject(450, 397, 35, 35);
 		offsetX = boxArray[pos].getX() / 5;
 		offsetY = boxArray[pos].getY() / 5;
 		for (int j = 0; j < 7; j++) {
@@ -75,7 +77,7 @@ public class World {
 		}
 		pos++;
 
-		boxArray[pos] = new TestStaticObject(450, 432, 35, 35);
+		boxArray[pos] = new StaticObject(450, 432, 35, 35);
 		offsetX = boxArray[pos].getX() / 5;
 		offsetY = boxArray[pos].getY() / 5;
 		for (int j = 0; j < 7; j++) {

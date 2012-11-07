@@ -1,20 +1,20 @@
 package objects;
 
-public abstract class GenericObject {
+public abstract class BaseObject {
 
 	private int x;
 	private int y;
-	private int height;
-	private int width;
+	protected int height;
+	protected int width;
 	
-	public GenericObject() {
+	public BaseObject() {
 		x=0;
 		y=0;
 		height=0;
 		width=0;
 	}
 	
-	public GenericObject(int x,int y,int height, int width){
+	public BaseObject(int x,int y,int height, int width){
 		this.x = x;
 		this.y = y;
 		this.height = height;

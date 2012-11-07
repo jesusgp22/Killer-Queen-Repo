@@ -1,49 +1,30 @@
-package demo;
+package objects;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-public class Object {
+public class MobileObject extends BaseObject{
 
-	private int x;
 	private int dx;
-	private int y;
 	private int dy;
 	private Image objectImage;
 	private int objectSpeed;
 
-	public Object() {
-		setX(0);
-		setY(0);
+	public MobileObject() {
+		super();
 		setObjectSpeed(0);
 		ImageIcon image = new ImageIcon();
 		setObjectImage(image.getImage());
 	}
 
-	public Object(int x, int y, int objectSpeed, String objectImage) {
+	public MobileObject(int x, int y, int objectSpeed, String objectImage) {
 		setX(x);
 		setY(y);
 		setObjectSpeed(objectSpeed);
 		ImageIcon image = new ImageIcon(objectImage);
 		setObjectImage(image.getImage());
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	public int getDx() {

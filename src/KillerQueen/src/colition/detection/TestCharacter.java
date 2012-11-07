@@ -3,9 +3,9 @@ package colition.detection;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
-import objects.GenericObject;
+import objects.BaseObject;
 
-public class TestCharacter extends GenericObject {
+public class TestCharacter extends BaseObject {
 
 	int dx, dy;
 	Point upper, leftUpper, leftLower, rightUpper, rightLower, leftFoot,

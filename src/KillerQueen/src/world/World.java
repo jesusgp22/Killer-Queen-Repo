@@ -1,4 +1,4 @@
-package demo;
+package world;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,24 +7,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.Timer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class Mundo extends JPanel implements ActionListener {
+import objects.MobileObject;
+import objects.Character;
+
+public class World extends JPanel implements ActionListener {
 
 	public Image fondo;
 	int camx, camy, dx, dy, sizeX, sizeY, posChX, posChY;
 	Timer time;
-	Personaje p;
-	Object object;
+	Character p;
+	MobileObject object;
 
-	public Mundo() {
+	public World() {
 
-		String root = new String("/home/leo/workspace/Killer-Queen-Repo/src/KillerQueen/res/");
-		p = new Personaje();
-		object = new Object(0, 0, 0, (root + "cuadrado.png"));
+		String root = new String("src/resources/images/");
+		p = new Character();
+		object = new MobileObject(0, 0, 0, (root + "cuadrado.png"));
 
 		camx = 0;
 		camy = 0;
@@ -34,7 +37,7 @@ public class Mundo extends JPanel implements ActionListener {
 		posChY=300;
 		addKeyListener(new AL());
 		setFocusable(true);
-		ImageIcon i = new ImageIcon(root + "BGR.jpg");
+		ImageIcon i = new ImageIcon(root + "BG.jpg");
 		fondo = i.getImage();
 		sizeX = i.getIconWidth();
 		sizeY = i.getIconHeight();
