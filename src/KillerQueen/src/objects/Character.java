@@ -7,9 +7,10 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-public class Character {
-	int x, y, dx,np, dy;
+public class Character extends MobileObject{
+	int np;
 	public Image still;
+	
 	String root = new String("src/resources/images/");
 	
 	ImageIcon r = new ImageIcon(root + "nosamus2.png");
@@ -24,19 +25,10 @@ public class Character {
 	
 	public Character(){
 
+		super();
 		still = r.getImage();
-		x = 75;
-		y = 300;
 		np=0;
 		
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
 	}
 	
 	public Image getImage(){

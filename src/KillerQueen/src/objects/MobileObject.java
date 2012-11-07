@@ -5,10 +5,10 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-public class MobileObject extends BaseObject{
+public class MobileObject extends BaseObject {
 
-	private int dx;
-	private int dy;
+	protected int dx;
+	protected int dy;
 	private Image objectImage;
 	private int objectSpeed;
 
@@ -19,12 +19,20 @@ public class MobileObject extends BaseObject{
 		setObjectImage(image.getImage());
 	}
 
-	public MobileObject(int x, int y, int objectSpeed, String objectImage) {
-		setX(x);
-		setY(y);
-		setObjectSpeed(objectSpeed);
+	public MobileObject(int x, int y, int height, int width, int objectSpeed,
+			String objectImage) {
+		super(x, y, height, width);
+		this.objectSpeed = objectSpeed;
 		ImageIcon image = new ImageIcon(objectImage);
 		setObjectImage(image.getImage());
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public int getDx() {
@@ -60,48 +68,8 @@ public class MobileObject extends BaseObject{
 	}
 
 	public void moveObject() {
-		setX(getX() + getDx());
-		setY(getY() + getDy());
-	}
-
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-
-		if (key == KeyEvent.VK_LEFT) {
-			setDx(-getObjectSpeed());
-		}
-
-		if (key == KeyEvent.VK_RIGHT) {
-			setDx(getObjectSpeed());
-		}
-
-		if (key == KeyEvent.VK_UP) {
-			setDy(-getObjectSpeed());
-		}
-
-		if (key == KeyEvent.VK_DOWN) {
-			setDy(getObjectSpeed());
-		}
-	}
-
-	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
-
-		if (key == KeyEvent.VK_LEFT) {
-			setDx(0);
-		}
-
-		if (key == KeyEvent.VK_RIGHT) {
-			setDx(0);
-		}
-
-		if (key == KeyEvent.VK_UP) {
-			setDy(0);
-		}
-
-		if (key == KeyEvent.VK_DOWN) {
-			setDy(0);
-		}
+		x = (getX() + getDx());
+		y = (getY() + getDy());
 	}
 
 }

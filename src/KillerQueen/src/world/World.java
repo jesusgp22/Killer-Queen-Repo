@@ -27,7 +27,7 @@ public class World extends JPanel implements ActionListener {
 
 		String root = new String("src/resources/images/");
 		p = new Character();
-		object = new MobileObject(0, 0, 0, (root + "cuadrado.png"));
+		object = new MobileObject(0, 0, 0,0,0, (root + "cuadrado.png"));
 
 		camx = 0;
 		camy = 0;

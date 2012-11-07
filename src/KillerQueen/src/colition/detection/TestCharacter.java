@@ -39,8 +39,8 @@ public class TestCharacter extends BaseObject {
 	}
 
 	public void move() {
-		setX(getX() + dx);
-		setY(getY() + dy);
+		x = (getX() + dx);
+		y = (getY() + dy);
 		upper.setLocation(getX() + (getWidth() / 2), getY());
 		leftUpper.setLocation(getX(), (int) (getY() + 0.2 * getHeight()));
 		leftLower.setLocation(getX(), (int) (getY() + 0.8 * getHeight()));
