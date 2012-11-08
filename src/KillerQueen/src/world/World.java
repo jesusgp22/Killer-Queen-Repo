@@ -8,13 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import objects.MobileObject;
 import objects.Character;
 
+@SuppressWarnings("serial")
 public class World extends JPanel implements ActionListener {
 	
 	// Tamaño de la ventana (900x550)
@@ -30,8 +30,6 @@ public class World extends JPanel implements ActionListener {
 	public World() {
 
 		imageLoader = new ImageLoader();
-		String root = new String("src/resources/images/");
-		
 		object = new MobileObject(0, 0, 0, 0, 0,
 				imageLoader.cuadrado.getImage());
 
@@ -147,7 +145,7 @@ public class World extends JPanel implements ActionListener {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_LEFT) {
 			dx = -5;
-			int np = p.getNp();
+			int np = p.getStepNumber();
 
 			if (np >= 0 && np < 3) {
 				p.setObjectImage(imageLoader.l.getImage());
@@ -172,7 +170,7 @@ public class World extends JPanel implements ActionListener {
 		if (key == KeyEvent.VK_RIGHT) {
 			dx = 5;
 
-			int np = p.getNp();
+			int np = p.getStepNumber();
 			if (np >= 0 && np < 3) {
 				p.setObjectImage(imageLoader.r.getImage());
 				np = np + 1;

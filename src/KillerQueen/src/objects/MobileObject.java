@@ -1,9 +1,6 @@
 package objects;
 
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-
-import javax.swing.ImageIcon;
 
 public class MobileObject extends BaseObject {
 
@@ -15,8 +12,7 @@ public class MobileObject extends BaseObject {
 	public MobileObject() {
 		super();
 		setObjectSpeed(0);
-		ImageIcon image = new ImageIcon();
-		setObjectImage(image.getImage());
+		objectImage = null;
 	}
 
 	public MobileObject(int x, int y, int height, int width, int objectSpeed,
@@ -64,11 +60,6 @@ public class MobileObject extends BaseObject {
 
 	public void setObjectImage(Image objectImage) {
 		this.objectImage = objectImage;
-	}
-
-	public void moveObject() {
-		x = (getX() + getDx());
-		y = (getY() + getDy());
 	}
 
 }
