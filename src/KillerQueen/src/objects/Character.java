@@ -68,7 +68,6 @@ public class Character extends MobileObject {
 		g2d.setColor(Color.RED);
 		g2d.drawPolygon(xCoords, yCoords, 7);
 	}
-
 	public void move() {
 		x += dx;
 		y += dy;

@@ -43,7 +43,6 @@ public class GameCanvas extends JPanel implements ActionListener {
 		repaint();
 	}
 	
-	
 
 	private void handleColitions() {
 		boolean solveColitionNeeded = false;
