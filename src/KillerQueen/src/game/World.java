@@ -29,6 +29,8 @@ public class World {
 	}
 	
 	public void insertObject(StaticObject staticObject){
+		if(numObjects>=MAX_OBJECTS)
+			return;
 		worldObjets[numObjects] = staticObject;
 		numObjects++;
 		updateGrid(staticObject.getX(),staticObject.getY(),staticObject.getHeight(),staticObject.getWidth());

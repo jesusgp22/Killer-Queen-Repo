@@ -6,16 +6,16 @@ public class ImageLoader {
 
 	String root = new String("src/resources/images/");
 
-	ImageIcon r;
-	ImageIcon l;
-	ImageIcon rr;
-	ImageIcon ll;
-	ImageIcon rrr;
-	ImageIcon lll;
-	ImageIcon rrrr;
-	ImageIcon llll;
-	ImageIcon cuadrado;
-	ImageIcon i;
+	public ImageIcon r;
+	public ImageIcon l;
+	public ImageIcon rr;
+	public ImageIcon ll;
+	public ImageIcon rrr;
+	public ImageIcon lll;
+	public ImageIcon rrrr;
+	public ImageIcon llll;
+	public ImageIcon cuadrado;
+	public ImageIcon i;
 	
 	public ImageLoader() {
 

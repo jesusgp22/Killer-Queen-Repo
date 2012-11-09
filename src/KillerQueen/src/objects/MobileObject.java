@@ -1,5 +1,6 @@
 package objects;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 public class MobileObject extends BaseObject {
@@ -7,18 +8,15 @@ public class MobileObject extends BaseObject {
 	protected int dx;
 	protected int dy;
 	protected Image objectImage;
-	protected int objectSpeed;
 
 	public MobileObject() {
 		super();
-		setObjectSpeed(0);
 		objectImage = null;
 	}
 
-	public MobileObject(int x, int y, int height, int width, int objectSpeed,
+	public MobileObject(int x, int y, int height, int width,
 			Image objectImage) {
 		super(x, y, height, width);
-		this.objectSpeed = objectSpeed;
 		this.objectImage = objectImage;
 	}
 
@@ -46,20 +44,16 @@ public class MobileObject extends BaseObject {
 		this.dy = dy;
 	}
 
-	public int getObjectSpeed() {
-		return objectSpeed;
-	}
-
-	public void setObjectSpeed(int objectSpeed) {
-		this.objectSpeed = objectSpeed;
-	}
-
-	public Image getObjectImage() {
-		return objectImage;
-	}
 
 	public void setObjectImage(Image objectImage) {
 		this.objectImage = objectImage;
 	}
 
+	public void draw(Graphics2D g2d){
+		g2d.drawRect(x, y, width, height);
+	}
+
+	public Image getObjectImage() {
+		return objectImage;
+	}
 }

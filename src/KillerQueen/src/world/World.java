@@ -30,7 +30,7 @@ public class World extends JPanel implements ActionListener {
 	public World() {
 
 		imageLoader = new ImageLoader();
-		object = new MobileObject(0, 0, 0, 0, 0,
+		object = new MobileObject(0, 0, 0, 0,
 				imageLoader.cuadrado.getImage());
 
 		camx = 0;
@@ -40,7 +40,7 @@ public class World extends JPanel implements ActionListener {
 		posChX = 300;
 		posChY = 300;
 		
-		p = new Character(300,300,150,100, 0, imageLoader.r.getImage());
+		p = new Character(300,300,150,100, imageLoader.r.getImage());
 		
 		addKeyListener(new AL());
 		setFocusable(true);
